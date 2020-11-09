@@ -3,7 +3,7 @@
 
 typedef struct q_item {
     char data;
-    struct q_item next;
+    struct q_item *next;
 } q_item;
 
 typedef struct Queue {
@@ -15,7 +15,7 @@ typedef struct Queue {
 Queue queue();
 
 /* Returns true when queue is empty. */
-bool empty_q();
+bool empty_q(Queue);
 
 /* Enqueues an item at the rear of queue. */
 void enqueue(Queue*, char);
