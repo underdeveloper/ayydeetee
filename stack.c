@@ -9,7 +9,7 @@ Stack stack() {
     return new_stk;
 };
 
-bool empty(Stack stk) {
+bool empty_stk(Stack stk) {
     return (stk.top == NULL);
 }
 
@@ -24,7 +24,7 @@ void push(Stack *stk, int new_data) {
 }
 
 int pop(Stack *stk) {
-    if (empty(*stk)) {
+    if (empty_stk(*stk)) {
         printf("Tried to pop stack, however stack was empty.\n");
         return -1;
     } else {
@@ -39,7 +39,7 @@ int pop(Stack *stk) {
 }
 
 int peek(Stack *stk) {
-    if (empty(*stk)) {
+    if (empty_stk(*stk)) {
         printf("Tried to peek the top of the stack, however stack was empty.\n");
         return -1;
     } else {

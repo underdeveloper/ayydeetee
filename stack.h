@@ -13,16 +13,16 @@ typedef struct Stack {
 /* Initializes an empty stack. */
 Stack stack(); 
 
-/* Returns true when stk is empty. */
-bool empty(Stack);
+/* Returns true when stack is empty. */
+bool empty_stk(Stack);
 
-/* Pushes an item on top of stk. */
+/* Pushes an item on top of stack. */
 void push(Stack*, int);
 
-/* Pops the top item of stk, also returns the popped item.*/
+/* Pops the top item of stack, also returns the popped item.*/
 int pop(Stack*);
 
-/* Returns the top item of stk. */
+/* Returns the top item of stack. */
 int peek(Stack*);
 
 #endif
