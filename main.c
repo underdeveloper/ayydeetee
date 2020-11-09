@@ -5,12 +5,27 @@
 
 int main() {
     Stack stk_A = stack();
+
     if (empty(stk_A)) {
         printf("This stack is empty.\n");
+    } else {
+        printf("This stack is not empty.\n");
     };
-    push(stk_A, 5);
+
+    push(&stk_A, 5);
+
     if (empty(stk_A)) {
         printf("This stack is empty.\n");
+    } else {
+        printf("This stack is not empty. The top of the stack is %d.\n", peek(&stk_A));
+    };
+
+    pop(&stk_A);
+    
+    if (empty(stk_A)) {
+        printf("This stack is empty.\n");
+    } else {
+        printf("This stack is not empty. The top of the stack is %d.\n", peek(&stk_A));
     };
     return 0;
 }

@@ -17,12 +17,12 @@ Stack stack();
 bool empty(Stack);
 
 /* Pushes an item on top of stk. */
-void push(Stack, int);
+void push(Stack*, int);
 
-/* Pops the top item of stk. */
-void pop(Stack);
+/* Pops the top item of stk, also returns the popped item.*/
+int pop(Stack*);
 
 /* Returns the top item of stk. */
-int peek(Stack);
+int peek(Stack*);
 
 #endif
