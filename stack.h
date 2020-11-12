@@ -14,7 +14,7 @@ typedef struct Stack {
 Stack stack(); 
 
 /* Returns true when stack is empty. */
-bool empty_stk(Stack);
+bool empty_stk(Stack*);
 
 /* Pushes an item on top of stack. */
 void push(Stack*, int);

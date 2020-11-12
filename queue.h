@@ -15,7 +15,7 @@ typedef struct Queue {
 Queue queue();
 
 /* Returns true when queue is empty. */
-bool empty_q(Queue);
+bool empty_q(Queue*);
 
 /* Enqueues an item at the rear of queue. */
 void enqueue(Queue*, char);

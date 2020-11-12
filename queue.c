@@ -10,8 +10,8 @@ Queue queue() {
     return new_q;
 }
 
-bool empty_q(Queue q) {
-    return (q.front == NULL);
+bool empty_q(Queue *q) {
+    return (q->front == NULL);
 }
 
 void enqueue(Queue *q, char new_data) {
@@ -20,7 +20,7 @@ void enqueue(Queue *q, char new_data) {
 
     new_item->data = new_data;
     new_item->next = NULL;
-    if (empty_q(*q)) {
+    if (empty_q(q)) {
         q->front = new_item;
         q->rear = new_item;
     } else {
@@ -31,7 +31,7 @@ void enqueue(Queue *q, char new_data) {
 }
 
 char dequeue(Queue *q) {
-    if (empty_q(*q)) {
+    if (empty_q(q)) {
         printf("Tried to dequeue, however queue was empty.\n");
         return ' ';
     } else {
