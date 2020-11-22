@@ -11,14 +11,28 @@ typedef struct tree_node {
 
 typedef struct BSTree {
     tree_node *root;
-    int height;
 } BSTree; 
 
 /* Creates an empty BST. */
 BSTree bst();
 
+/* Returns true when the node only has a left branch. */
+bool skew_left_bst_node(tree_node*);
+
+/* Returns true when the node only has a right branch. */
+bool skew_right_bst_node(tree_node*);
+
+/* Returns true when the node has no more branches, i.e. it is a leaf. */
+bool leaf_bst_node(tree_node*);
+
 /* Returns true when the tree is empty. */
-bool empty_bst(BSTree);
+bool empty_bst(BSTree*);
+
+/* Returns true when the tree skews left. */
+bool skew_left_bst(BSTree*);
+
+/* Returns true when the tree skews right. */
+bool skew_right_bst(BSTree*);
 
 /* Traverses through the tree, depth first, to find whether a key exists or not. */
 bool search_key_bst(BSTree*, int);

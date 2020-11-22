@@ -68,7 +68,7 @@ int return_loc_ll(LkList *ll, short index) {
         count += 1;
     }
     if (count < index) {
-        printf("(%%) Tried to find the data at index %d, however the list was %d nodes long.\n", index, count);
+        printf("(%%) Tried to find the data at index %d, however the list was %d nodes long. Returned -999 instead.\n", index, count);
         return -999;
     } else {
         return crawler->data;
@@ -77,8 +77,37 @@ int return_loc_ll(LkList *ll, short index) {
 
 void print_ll(LkList *ll) {
     llnode *crawler = ll->head;
+    printf("List: ");
     while(crawler != NULL) {
-        printf("%d\n", crawler->data);
+        printf("%d ", crawler->data);
         crawler = crawler->next;
+    }
+    printf("\n");
+}
+
+void del_head_ll(LkList* ll) {
+    if (empty_ll(ll)) {
+        printf("(%%) Tried to delete the head of list, however list was empty.\n");
+    } else {
+        llnode *old_head = ll->head;
+        ll->head = old_head->next;
+        free(old_head);
+    }
+}
+
+void del_tail_ll(LkList* ll) {
+    if (empty_ll(ll)) {
+        printf("(%%) Tried to delete the head of list, however list was empty.\n");
+    } else {
+        llnode *prev = NULL;
+        llnode *crawler = ll->head;
+        llnode *next = ll->head->next;
+        while(next != NULL) {
+            prev = crawler;
+            crawler = crawler->next;
+            next = crawler->next;
+        }
+        if (prev != NULL) {prev->next = NULL;}
+        free(crawler);
     }
 }

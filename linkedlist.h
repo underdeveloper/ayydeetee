@@ -31,4 +31,10 @@ int return_loc_ll(LkList*, short);
 /* Displays every data within the list. */
 void print_ll(LkList*);
 
+/* Deletes the head of the list. */
+void del_head_ll(LkList*);
+
+/* Deletes the tail of the list. */
+void del_tail_ll(LkList*);
+
 #endif
