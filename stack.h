@@ -14,15 +14,15 @@ typedef struct Stack {
 Stack stack(); 
 
 /* Returns true when stack is empty. */
-bool empty_stk(Stack*);
+bool empty_stk(Stack* stk);
 
 /* Pushes an item on top of stack. */
-void push(Stack*, int);
+void push(Stack* stk, int data);
 
 /* Pops the top item of stack, also returns the popped item.*/
-int pop(Stack*);
+int pop(Stack* stk, int data);
 
 /* Returns the top item of stack. */
-int peek(Stack*);
+int peek(Stack* stk, int data);
 
 #endif

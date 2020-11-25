@@ -15,14 +15,12 @@ typedef struct Queue {
 Queue queue();
 
 /* Returns true when queue is empty. */
-bool empty_q(Queue*);
+bool empty_q(Queue* q);
 
 /* Enqueues an item at the rear of queue. */
-void enqueue(Queue*, char);
+void enqueue(Queue* q, char data);
 
 /* Dequeues the item at the front of queue, also returns the dequeued item. */
-char dequeue(Queue*);
-
-
+char dequeue(Queue* q);
 
 #endif
