@@ -16,6 +16,9 @@ LkList lklist();
 /* Checks whether a list was empty. */
 bool empty_ll(LkList* ll);
 
+/* Returns the size of the list */
+int size_ll(LkList* ll);
+
 /* Adds a new node to the beginning of the list. */
 void add_head_ll(LkList* ll, int data);
 

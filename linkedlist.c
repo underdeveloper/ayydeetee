@@ -13,6 +13,16 @@ bool empty_ll(LkList* ll) {
     return (ll->head == NULL);
 }
 
+int size_ll(LkList* ll) {
+    llnode *crawler = ll->head;
+    short size = (crawler != NULL);
+    while(crawler != NULL) {
+        crawler = crawler->next;
+        size += 1;
+    }
+    return size;
+}
+
 void add_head_ll(LkList* ll, int new_data) {
     llnode *new_node = (llnode*)malloc(sizeof(llnode));
     new_node->data = new_data;

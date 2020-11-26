@@ -11,11 +11,11 @@ Matrix matrix(int height, int width) {
     return new_mtx;
 };
 
-void input_matrix(Matrix this_mtx) {
+void input_matrix(Matrix* mtx) {
     int row, col;
-    int *crawler = this_mtx.data;
-    for (row=1;row<=this_mtx.height;++row) {
-        for (col=1;col<=this_mtx.width;++col) {
+    int *crawler = mtx->data;
+    for (row=1;row<=mtx->height;++row) {
+        for (col=1;col<=mtx->width;++col) {
             printf("Insert for row %d, column %d: ", row, col);
             scanf("%d", crawler);
             crawler += 1;
@@ -24,25 +24,23 @@ void input_matrix(Matrix this_mtx) {
     printf("\n");
 }
 
-void insert_value_to_cell_matrix(Matrix this_mtx, int row, int col, int value) {
-    int *crawler = this_mtx.data;
-    crawler += ((row-1)*this_mtx.width) + (col-1);
+void insert_value_to_cell_matrix(Matrix* mtx, int row, int col, int value) {
+    int *crawler = mtx->data;
+    crawler += ((row-1)*mtx->width) + (col-1);
     *crawler = value;
 }
 
-int give_cell_value_matrix(Matrix this_mtx, int row, int col) {
-    int *crawler = this_mtx.data;
-    crawler += ((row-1)*this_mtx.width) + (col-1);
+int get_cell_value_matrix(Matrix* mtx, int row, int col) {
+    int *crawler = mtx->data;
+    crawler += ((row-1)*mtx->width) + (col-1);
     return *crawler;
 }
 
-void display_matrix(Matrix this_mtx) {
+void display_matrix(Matrix* mtx) {
     int row, col;
-    int *crawler = this_mtx.data;
-    for (row = 1; row <= this_mtx.height; ++row)
-    {
-        for (col = 1; col <= this_mtx.width; ++col)
-        {
+    int *crawler = mtx->data;
+    for (row = 1; row <= mtx->height; ++row) {
+        for (col = 1; col <= mtx->width; ++col) {
             printf("%6d ", *crawler);
             crawler += 1;
         }
@@ -51,17 +49,33 @@ void display_matrix(Matrix this_mtx) {
     printf("\n");
 }
 
-Matrix transpose_matrix(Matrix this_mtx) {
-    Matrix transpose = matrix(this_mtx.width, this_mtx.height);
+Matrix transpose_matrix(Matrix* mtx) {
+    Matrix transpose = matrix(mtx->width, mtx->height);
     int row, col;
-    int *crawler = this_mtx.data;
-    for (row = 1; row <= this_mtx.height; ++row)
-    {
-        for (col = 1; col <= this_mtx.width; ++col)
-        {
-            change_elmt(transpose, col, row, *crawler);
+    int *crawler = mtx->data;
+    for (row = 1; row <= mtx->height; ++row) {
+        for (col = 1; col <= mtx->width; ++col) {
+            insert_value_to_cell_matrix(&transpose, col, row, *crawler);
             crawler += 1;
         }
     }
     return transpose;
 }
+
+Matrix change_size_matrix(Matrix* mtx, int height, int width) {
+    Matrix result = matrix(height, width);
+    int row, col;
+    for (row = 1; row <= height; ++row) {
+        for (col = 1; col <= width; ++col) {
+            int value;
+            if (mtx->height < row || mtx->width < col) {
+                value = 0;
+            } else {
+                value = get_cell_value_matrix(mtx, row, col);
+            }
+            insert_value_to_cell_matrix(&result, row, col, value);
+        }
+    }
+    return result;
+}
+
